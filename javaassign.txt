@@ -1,0 +1,81 @@
+Q1. Write and Explain Singleton class ?
+A. 
+A singleton class in java can have only one instance and hence all its methods and variables belong to just one instance. Singleton class concept is useful for the situations when there is a need to limit the number of objects for a class.
+
+The best example of singleton usage scenario is when there is a limit of having only one connection to a database due to some driver limitations or because of any licensing issues.
+
+Singleton design pattern in Java
+In object-oriented programming , Singleton pattern restricts the instantiation of a class and ensures that only one instance of the class exists in the JVM (Java Virtual Machine). In other words, a class should ensure that only a single instance must be created and single object can be used by all other classes.
+
+Usage of Singleton Pattern
+When you need to ensure that there's one instance of an object available to a number of other classes, you may want to use the Singleton pattern.
+
+Advantage
+Singleton Pattern can saves memory because object is not created at each request.
+Provide a global point of access to the object.
+Allow multiple instances in the future without affecting a singleton class's clients.
+How to create Singleton design pattern?
+In order to create a Singleton Pattern, you need the following:
+
+Static member: It gets memory only once because of static, it contains the instance of the Singleton class.
+Private constructor: It will prevent to instantiate the Singleton class from outside the class.
+Static factory method: It provides the global point of access to the Singleton object and returns the instance to the caller.
+
+EXAMPLE:
+ 
+class SingletonClass
+{
+  private static SingletonClass sInstance = null;
+  public String msg;
+  private SingletonClass()
+  {
+      msg = "Singleton Test";
+  }
+  public static SingletonClass getInstance()
+  {
+      if (sInstance == null)
+          sInstance = new SingletonClass();
+      return sInstance;
+  }
+}
+
+In the SingletonClass, first time when we request first time call getInstance() method, it creates an object of the class with name sInstance and return it to the variable.
+
+ 
+  if (sInstance == null)
+      sInstance = new SingletonClass();
+
+Since sInstance is static, it is changed from null to some object. Second time, when we try to call getInstance() method, since sInstance is not null, then it is returned to the variable, instead of creating new object of SingletonClass.
+
+In the main method, we instantiate the singleton class with 3 objects obj1, obj2, obj3 by calling static method getInstance() . But actually after creation of object obj1, variables obj2 and obj3 are pointed to object obj1. So, if we change the variables of object obj1, that is reflected when we access the variables of objects obj2 and obj3. Also if we change the variables of object obj3, that is reflected when we access the variables of objects obj1 and obj2.
+Q2.Can we declare the main method of our class as a private?
+A2.
+In java, main method must be public static in order to run any application correctly. If main method is declared as private, developer won't get any compilation error however, it will not get executed and will give a runtime error.
+
+Yes, we can declare main method as private. It compiles without
+any errors, but in runtime, it says main method is not public. If we declare a constructor as private we are not able to create an object of a class. We can use this private constructor in the Singleton Design Pattern.
+
+Conditions for Private Constructor
+A private constructor does not allow a class to be subclassed.
+A private constructor does not allow to create an object outside the class.
+If all the constant methods are there in our class we can use a private constructor.
+If all the methods are static then we can use a private constructor.
+If we try to extend a class which is having private constructor compile time error will occur
+Q3.What is difference between inner class and subclass. Explain Specifiers of java?
+A3.
+An Inner class is a class which is nested within another class. An Inner class has access rights for the class which is nesting it and it can access all variables and methods defined in the outer class.
+
+A sub-class is a class which inherits from another class called super class. Sub-class can access all public and protected methods and fields of its super class.
+
+There are big differences between inner classes and subclasses:
+
+inner classes are in the same file, whereas subclasses can be in another file, maybe in another package.
+You cannot get an instance of an inner class without an instance of the class that contains it.
+inner classes have the methods they want, whereas subclasses have the methods of their parent class. Subclasses can, of course, define additional methods, but they'll always have those of their parent.
+When we use inner classes and subclasses?
+
+inner classes are used when your big class needs a (usually short) class, related to its internal operation, and when nobody else needs it. A good example is the LinkedList: it needs a Node class to work, that is short, and that no other class needs. Therefore Node is an inner class of LinkedList.
+subclasses are used when you define a "is-a" relationship. Picture this: you want to make different types of cars. They have common properties and features: they all can move, they all have passengers, etc. So you create an abstract class "Car" with these common things. And you create a subclass for every different type of car.
+
+Q3.Write a program to cal. perimeter of triangle having sides of length 2,3,5?
+A.
